@@ -1,19 +1,43 @@
 header {
-    height: 50px;
     display: grid;
-    grid-template-columns: 1fr 3fr 10fr;
+    grid-template-columns: repeat(1fr, 10);
     gap: 10px;
     font-size: 110%;
 }
 .logo {
     display: grid;
+    grid-column-start: 1;
+    grid-column-end: 2;
     height: 50px;
     width: 70px;
 }
-nav {
+select {
     display: grid;
-    grid-template-columns: repeat(1fr, 8);
+    grid-column-start: 3;
+    grid-column-end: 4;
+    border: rgb(125, 211, 154) 1px solid;
 }
-nav select {
-    
+header h2 {
+    display: grid;
+    grid-column-start: 4;
+    grid-row-start: 1;
+    grid-column-end: 10;
+    grid-row-end: 1;
+}
+header h1 {
+    display: grid;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-column-end: 3;
+    grid-row-end: 1;
+    padding: 0%;
+    margin: 0%;
+    font-size: 100%;
+}
+#weekSelector {
+    display: grid;
+    grid-column-start: 2;
+    grid-row-start: 3;
+    grid-column-end: 3;
+    grid-row-end: 2;
 }
