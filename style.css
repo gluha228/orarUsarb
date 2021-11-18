@@ -1,0 +1,19 @@
+header {
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 10fr;
+    gap: 10px;
+    font-size: 110%;
+}
+.logo {
+    display: grid;
+    height: 50px;
+    width: 70px;
+}
+nav {
+    display: grid;
+    grid-template-columns: repeat(1fr, 8);
+}
+nav select {
+    
+}
