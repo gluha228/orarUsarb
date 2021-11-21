@@ -1,43 +1,91 @@
+body {
+    background: url(img/background.jpg);
+    background-size: 100%;
+}
 header {
+    background-color: white;
+    width: 80%;
+    margin: 10%;
+    margin-bottom: 1%;
+    padding: 3%;
     display: grid;
-    grid-template-columns: repeat(1fr, 10);
+    grid-template-columns: 1fr 2fr 2fr 6fr 1fr 1fr;
     gap: 10px;
     font-size: 110%;
 }
 .logo {
     display: grid;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    height: 50px;
-    width: 70px;
+    height: 80px;
+    width: 80px;
+    margin: 5px;
 }
 select {
     display: grid;
-    grid-column-start: 3;
-    grid-column-end: 4;
-    border: rgb(125, 211, 154) 1px solid;
+    border: rgb(125, 211, 154) 2px solid;
+    margin:5%;
+    height: 50px;
 }
 header h2 {
     display: grid;
-    grid-column-start: 4;
-    grid-row-start: 1;
-    grid-column-end: 10;
-    grid-row-end: 1;
+    font-size: 200%;
+    margin:15px;
 }
 header h1 {
     display: grid;
-    grid-column-start: 2;
-    grid-row-start: 1;
-    grid-column-end: 3;
-    grid-row-end: 1;
-    padding: 0%;
-    margin: 0%;
+    margin: 5px;
     font-size: 100%;
+    vertical-align: center;
 }
-#weekSelector {
+.weekButton {
     display: grid;
-    grid-column-start: 2;
-    grid-row-start: 3;
-    grid-column-end: 3;
-    grid-row-end: 2;
+    border: rgb(125, 211, 154) 2px solid;
+    height: 50px;
+    margin: 5%;
+    font-size: 80%;
+    padding: 5px;
+    cursor: pointer;
+}
+.weekButton:hover {
+    border-bottom: rgb(125, 211, 154) 5px solid;
+    background: #BBB;
+}
+
+.timetable {
+    background-color: white;
+    width: 80%;
+    margin: 10%;
+    margin-top: 0%;
+    padding: 3%;
+    font-size: 110%;
+}
+.day {
+    width: 80%;
+    display:grid;
+    grid-template-columns: 1fr 7fr;
+    margin-bottom: 5%;
+}
+.day-week {
+    display: grid;
+    margin-top: 6%;
+}
+.day-timetable {
+    display: grid;
+}
+.lesson {
+    display: grid;
+    border: rgba(0, 0, 0, 0.3) solid 1px;
+    grid-template-columns: 1fr 9fr;
+    width: 130%;
+    height: 110px;
+    padding: 1%;
+}
+.lesson .time {
+    color: rgba(0, 0, 0, 0.596);
+    font-style: italic;
+    margin-left: 1%;
+}
+.lesson h4 {
+    margin: 0%;
+    font-weight: 300;
+    font-size: 140%;
 }
