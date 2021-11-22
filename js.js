@@ -22,9 +22,13 @@ function insertContent(){
     let content = document.querySelector(".timetable")
     content.innerHTML='';
     for (dayOfWeek=1; dayOfWeek<6; dayOfWeek++) {
-    zeroDate.setDate(zeroDate.getDate()+1);
+        let today = new Date();
         content.insertAdjacentHTML("beforeend",
-        '<div class="day"><div class="day-week">'+zeroDate.getDate()+'.'+(zeroDate.getMonth()+1)+', '+weekDays[zeroDate.getDay()-1]+'</div><div class="day-timetable"><div id="'+weekDays[dayOfWeek]+'"></div></div></div>')
+        '<div class="day"><div class="day-week" id="'+dayOfWeek+'">'+(zeroDate.getDate())+'.'+(zeroDate.getMonth()+1)+', '+weekDays[zeroDate.getDay()]+'</div><div class="day-timetable"><div id="'+weekDays[dayOfWeek]+'"></div></div></div>');
+       
+        if (zeroDate.getMonth()==today.getMonth() && zeroDate.getDate()==today.getDate()){
+            document.getElementById(dayOfWeek).classList.add('sublined');
+        }
         for (lesson = 1; lesson <= timetable[group][week][dayOfWeek-1].length; lesson++) {
             flow = lessons[group][timetable[group][week][dayOfWeek-1][lesson-1][1]];
             document.getElementById(weekDays[dayOfWeek]).insertAdjacentHTML("beforeend",
@@ -34,6 +38,7 @@ function insertContent(){
             '</div><div>Flow '+flows[flow][0].join(', ')+
             '</div><div>'+flows[flow][1]+'</div><div><a href="">Link to lesson</a></div></div></div>')
         }
+        zeroDate.setDate(zeroDate.getDate()+1);
     }
     zeroDate=new Date('2021,11,'+(15+week*7));
 }
@@ -58,3 +63,11 @@ function introduceWeek(x){
 
 insertContent();
 introduceWeek(0);
+function selectGroup(){
+    var select = document.getElementById('grupa');
+    var value = select.options[select.selectedIndex].value;
+    console.log(value);
+    group=value;
+    insertContent();
+}
+selectGroup();

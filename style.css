@@ -2,6 +2,7 @@ body {
     background: url(img/background.jpg);
     background-size: 100%;
     background-attachment: fixed;
+    font-family: 'M PLUS 2', sans-serif;
 }
 header {
     background-color: white;
@@ -43,7 +44,7 @@ header h1 {
     border: rgb(125, 211, 154) 2px solid;
     height: 50px;
     margin: 5%;
-    font-size: 80%;
+    font-size: 70%;
     padding: 5px;
     cursor: pointer;
 }
@@ -70,6 +71,9 @@ header h1 {
     display: grid;
     margin-top: 6%;
 }
+.sublined {
+    text-decoration:black underline 1px;
+}
 .day-timetable {
     display: grid;
 }
@@ -89,6 +93,6 @@ header h1 {
 }
 .lesson h4 {
     margin: 0%;
-    font-weight: 300;
+    font-weight: 600;
     font-size: 140%;
 }
