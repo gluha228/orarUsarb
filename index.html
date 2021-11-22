@@ -12,11 +12,13 @@
         <img src="img/logo_usarb.png" alt="logo_usarb" class="logo">
         <h1>Universitatea de stat "Alecu Russo" din Balti</h1>
         <select size="1" id="grupa">
-            <option value="grupa">Grupa</option>
+            <option value="IT11Z">IT11Z</option>
+            <option value="IS11Z">IS11Z</option>
+            <option value="MI11Z">MI11Z</option>
         </select>
-        <h2>Расписание с 15 ноября по 21 ноября</h2>
-        <div class="weekButton">←Предыдущая неделя</div>
-        <div class="weekButton">Следующая неделя→</div>
+        <h2></h2>
+        <div class="weekButton" onclick="introduceWeek(-1)">←Previous week</div>
+        <div class="weekButton" onclick="introduceWeek(1)">Next week→</div>
     </header>
 
     <div class="timetable">

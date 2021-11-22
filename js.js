@@ -1,8 +1,7 @@
-const weekDays = ["none", "пнд", "втр", "срд", "чтв", "птн", "сбт", "вск"]; 
+const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]; 
+const monthsNames = ["january", "february", "march", "april", "may", "june","july", "august", "september", "october", "november", "december"];
 const lessonTime = ["none","8:00 - 9:30","9:45 - 11:15","11:30 - 13:00","13:15 - 14:45","15:00 - 16:30","16:45 - 18:15"];
-let week = 1;
-let group = "IT11Z";
-
+var zeroDate = new Date('2021,11,15');
 /*
 timetable[group][week][dayOfWeek][lesson]=lessonOrder, lessonName, lessonType
 lessons[group][lessonName] = flow
@@ -16,18 +15,46 @@ const timetable = {
 const lessons = {"IT11Z":{"Programming":"p1","WEB programming":"w1","English":"e1"},"IS11Z":{"Programming":"p1","WEB programming":"w2","English":"e1"},"MI11Z":{"Programming":"p1","WEB programming":"w2","English":"e1"}}
 const flows = {"p1":[["IT11Z","IS11Z","MI11Z"],"Iosif Visarionovich Stalin"], "w1":[["IT11Z"],"Vladimir Iliich Lenin"], "e1":[["IT11Z","IS11Z","MI11Z"],"Boris Nikolaevich Eltsin"], "w2":[["IS11Z","MI11Z"],"Stas Boretskii"]}
 let flow = "";
-let content = document.querySelector(".timetable")
-for (dayOfWeek=1; dayOfWeek<6; dayOfWeek++) {
-    content.insertAdjacentHTML("beforeend",
-    '<div class="day"><div class="day-week">21 ноября, пнд</div><div class="day-timetable"><div id="'+weekDays[dayOfWeek]+'"></div></div></div>')
-    for (lesson = 1; lesson <= timetable[group][week-1][dayOfWeek-1].length; lesson++) {
-        flow = lessons[group][timetable[group][week-1][dayOfWeek-1][lesson-1][1]];
-        document.getElementById(weekDays[dayOfWeek]).insertAdjacentHTML("beforeend",
-        '<div class="lesson"><div class="time">'+lessonTime[timetable[group][week-1][dayOfWeek-1][lesson-1][0]]+
-        '</div><div><h4>'+timetable[group][week-1][dayOfWeek-1][lesson-1][1]+
-        '</h4><div>'+timetable[group][week-1][dayOfWeek-1][lesson-1][2]+
-        '</div><div>Поток '+flows[flow][0].join(', ')+
-        '</div><div>'+flows[flow][1]+'</div><div><a href="">Link to lesson</a></div></div></div>')
-        console.log(document.getElementById(weekDays[dayOfWeek]));
+let week = 0;
+let group = "IT11Z";
+
+function insertContent(){
+    let content = document.querySelector(".timetable")
+    content.innerHTML='';
+    for (dayOfWeek=1; dayOfWeek<6; dayOfWeek++) {
+    zeroDate.setDate(zeroDate.getDate()+1);
+        content.insertAdjacentHTML("beforeend",
+        '<div class="day"><div class="day-week">'+zeroDate.getDate()+'.'+(zeroDate.getMonth()+1)+', '+weekDays[zeroDate.getDay()-1]+'</div><div class="day-timetable"><div id="'+weekDays[dayOfWeek]+'"></div></div></div>')
+        for (lesson = 1; lesson <= timetable[group][week][dayOfWeek-1].length; lesson++) {
+            flow = lessons[group][timetable[group][week][dayOfWeek-1][lesson-1][1]];
+            document.getElementById(weekDays[dayOfWeek]).insertAdjacentHTML("beforeend",
+            '<div class="lesson"><div class="time">'+lessonTime[timetable[group][week][dayOfWeek-1][lesson-1][0]]+
+            '</div><div><h4>'+timetable[group][week][dayOfWeek-1][lesson-1][1]+
+            '</h4><div>'+timetable[group][week][dayOfWeek-1][lesson-1][2]+
+            '</div><div>Flow '+flows[flow][0].join(', ')+
+            '</div><div>'+flows[flow][1]+'</div><div><a href="">Link to lesson</a></div></div></div>')
+        }
     }
+    zeroDate=new Date('2021,11,'+(15+week*7));
 }
+ 
+function introduceWeek(x){
+    week+=x;
+    if (week === -1) {week = 2} else if (week === 3) {week = 0};
+    zeroDate=new Date('2021,11,'+(15+week*7));
+    let title=document.querySelector("h2");
+    title.innerHTML=
+    'Timetable from '+zeroDate.getDate()+' '
+    +monthsNames[zeroDate.getMonth()]+' to '
+    zeroDate.setDate(zeroDate.getDate()+6);
+    title.insertAdjacentHTML("beforeend", zeroDate.getDate()+' '
+    +monthsNames[zeroDate.getMonth()]);
+    zeroDate.setDate(zeroDate.getDate()-6);
+    insertContent();
+
+}
+
+
+
+insertContent();
+introduceWeek(0);

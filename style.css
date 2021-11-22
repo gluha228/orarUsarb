@@ -1,6 +1,7 @@
 body {
     background: url(img/background.jpg);
     background-size: 100%;
+    background-attachment: fixed;
 }
 header {
     background-color: white;
@@ -28,7 +29,8 @@ select {
 header h2 {
     display: grid;
     font-size: 200%;
-    margin:15px;
+    margin:5px;
+    margin-left: 15px;
 }
 header h1 {
     display: grid;
@@ -82,7 +84,8 @@ header h1 {
 .lesson .time {
     color: rgba(0, 0, 0, 0.596);
     font-style: italic;
-    margin-left: 1%;
+    margin-left: 3%;
+    margin-top: 3%;
 }
 .lesson h4 {
     margin: 0%;
